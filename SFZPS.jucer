@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="viLErN" name="SFZPS" projectType="audioplug" jucerVersion="5.3.2"
+              reportAppUsage="0" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+  <MAINGROUP id="bGClzI" name="SFZPS">
+    <GROUP id="{559E5FF5-01BC-E3ED-58E8-43D6036DB697}" name="Source">
+      <GROUP id="{1E1F0B85-3B32-4D34-308F-E70CCAF61357}" name="DSP">
+        <FILE id="UHuqJZ" name="SynthParameters.cpp" compile="1" resource="0"
+              file="Source/DSP/SynthParameters.cpp"/>
+        <FILE id="RqjpHC" name="SynthParameters.h" compile="0" resource="0"
+              file="Source/DSP/SynthParameters.h"/>
+      </GROUP>
+      <GROUP id="{1D8AD3AB-4444-F809-6EAD-65A5E877156D}" name="GUI">
+        <FILE id="DWnYZG" name="ParametersComponent.cpp" compile="1" resource="0"
+              file="Source/GUI/ParametersComponent.cpp"/>
+        <FILE id="X1laQM" name="ParametersComponent.h" compile="0" resource="0"
+              file="Source/GUI/ParametersComponent.h"/>
+        <FILE id="JXoY52" name="ScopeComponent.cpp" compile="1" resource="0"
+              file="Source/GUI/ScopeComponent.cpp"/>
+        <FILE id="DitS3p" name="ScopeComponent.h" compile="0" resource="0"
+              file="Source/GUI/ScopeComponent.h"/>
+      </GROUP>
+      <FILE id="yMkyHY" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="URe52V" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="AkM2E9" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="SZO2JE" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="SFZero" path="Dependencies"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <XCODE_IPHONE targetFolder="Builds/iOS">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="SFZero" path="Dependencies"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
+    <VS2017 targetFolder="Builds/VisualStudio2017">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="SFZero" path="Dependencies"/>
+      </MODULEPATHS>
+    </VS2017>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="SFZero" path="Dependencies"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+    <ANDROIDSTUDIO targetFolder="Builds/Android">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="C:/SDKs/JUCE/modules"/>
+        <MODULEPATH id="SFZero" path="Dependencies"/>
+      </MODULEPATHS>
+    </ANDROIDSTUDIO>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="SFZero" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
