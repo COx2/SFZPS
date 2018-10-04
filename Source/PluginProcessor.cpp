@@ -26,17 +26,19 @@ SfzpsAudioProcessor::SfzpsAudioProcessor()
 	, scopeDataCollector(scopeDataQueue)
 	// AMP EGモジュールを操作するためのパラメータ群
 	, ampEGParameters{
-		new AudioParameterFloat("AMPEG_ATTACK", "Attack", 0.001f, 3.0f, 0.1f),
-		new AudioParameterFloat("AMPEG_DECAY", "Decay",  0.001f, 3.0f, 0.1f),
+		new AudioParameterFloat("AMPEG_ATTACK", "Attack", 0.001f, 3.0f, 0.001f),
+		new AudioParameterFloat("AMPEG_DECAY", "Decay",  0.001f, 3.0f, 0.001f),
 		new AudioParameterFloat("AMPEG_SUSTAIN", "Sustain", 0.0f, 100.0f, 100.0f),
 		new AudioParameterFloat("AMPEG_RELEASE", "Release", 0.001f, 3.0f, 0.1f)
 	}
-	, subSoundSelector(new AudioParameterInt("SUBSOUND_SELECTOR","SubSound", 0, 4, 0))
+	, subSoundSelector(new AudioParameterInt("SUBSOUND_SELECTOR","SubSound", 0, 255, 0))
 	, currentFileName("File Name")
-	//, currentFilePtr(nullptr)
+	, currentSampleFilePath("")
 {
+
 	ampEGParameters.addAllParameters(*this);
 	addParameter(subSoundSelector);
+
 }
 
 SfzpsAudioProcessor::~SfzpsAudioProcessor()
@@ -148,6 +150,9 @@ bool SfzpsAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) co
 
 void SfzpsAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
+	if(sfzSynth.getSound() != nullptr)
+		sfzSynth.getSound()->useSubsound(subSoundSelector->get());
+
 	// Merge MIDI messages.
 	keyboardState.processNextMidiBuffer(midiMessages, 0 , buffer.getNumSamples(), true);
 
@@ -184,10 +189,37 @@ AudioProcessorEditor* SfzpsAudioProcessor::createEditor()
 //==============================================================================
 void SfzpsAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
+	std::unique_ptr<XmlElement> xml(new XmlElement("SFZPSParameters"));
+	
+	ampEGParameters.saveParameters(*xml);
+	
+	xml->setAttribute("FilePath", currentSampleFilePath);
+
+	xml->setAttribute(subSoundSelector->paramID, subSoundSelector->get());
+
+	copyXmlToBinary(*xml, destData);
 }
 
 void SfzpsAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
+	std::unique_ptr<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+	if (xmlState.get() != nullptr)
+	{
+		if (xmlState->hasTagName("SFZPSParameters"))
+		{
+			ampEGParameters.loadParameters(*xmlState);
+
+			currentSampleFilePath = xmlState->getStringAttribute("FilePath");
+			if (currentSampleFilePath != "")
+			{
+				loadSampleFile(currentSampleFilePath);
+				*subSoundSelector = xmlState->getIntAttribute(subSoundSelector->paramID, 0);
+			}
+
+		}
+	}
+
+
 }
 
 bool SfzpsAudioProcessor::setSoundFontSample(String fileName, File* sfzFile)
@@ -208,6 +240,12 @@ bool SfzpsAudioProcessor::setSoundFontSample(String fileName, File* sfzFile)
 		SFZero::SF2Sound* sound = new SFZero::SF2Sound(*sfzFile);
 		sound->loadRegions();
 		sound->loadSamples(&formatManager);
+
+		subSoundNum = sound->numSubsounds();
+		// デシリアライズして代入しないとヌルポになるから注意
+		*subSoundSelector = 0;
+		sound->useSubsound(subSoundSelector->get());
+
 		sfzSynth.addSound(sound);
 	}
 	else if (extension == ".SFZ")
@@ -215,6 +253,11 @@ bool SfzpsAudioProcessor::setSoundFontSample(String fileName, File* sfzFile)
 		SFZero::SFZSound* sound = new SFZero::SFZSound(*sfzFile);
 		sound->loadRegions();
 		sound->loadSamples(&formatManager);
+
+		// デシリアライズして代入しないとヌルポになるから注意
+		*subSoundSelector = 0;
+		subSoundNum = sound->numSubsounds();
+
 		sfzSynth.addSound(sound);
 	}
 	else 
@@ -228,7 +271,21 @@ bool SfzpsAudioProcessor::setSoundFontSample(String fileName, File* sfzFile)
 
 	currentFileName = fileName;
 
-	//currentFilePtr = sfzFile;
+	currentSampleFilePath = sfzFile->getFullPathName();
+
+	return true;
+}
+
+bool SfzpsAudioProcessor::loadSampleFile(String filePath)
+{
+	File file(filePath);
+
+	if (!file.existsAsFile())
+	{
+		return false;
+	}
+	
+	setSoundFontSample(file.getFileName(), &file);
 
 	return true;
 }

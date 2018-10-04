@@ -70,9 +70,12 @@ public:
 
 	AmpEGParameters ampEGParameters;
 	AudioParameterInt* subSoundSelector;
-
+	int subSoundNum;
+	juce::String currentSampleFilePath;
 
 private:
+	bool loadSampleFile(String filePath);
+
 	//Synthesiser synth;
 	SFZero::SFZSynth sfzSynth;
 

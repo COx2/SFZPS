@@ -19,7 +19,7 @@
 //==============================================================================
 /**
 */
-class SfzpsAudioProcessorEditor  : public AudioProcessorEditor, Button::Listener
+class SfzpsAudioProcessorEditor  : public AudioProcessorEditor, Button::Listener, Slider::Listener, private Timer
 {
 public:
     SfzpsAudioProcessorEditor (SfzpsAudioProcessor&);
@@ -30,6 +30,8 @@ public:
     void resized() override;
 
 	virtual void buttonClicked(Button* buttonClicked) override;
+	virtual void sliderValueChanged(Slider* sliderChanged) override;
+	virtual void timerCallback() override;
 
 private:
     // This reference is provided as a quick way for your editor to
@@ -43,6 +45,9 @@ private:
 	TextButton loadSoundFontButton;
 
 	Label currentSoundFontName;
+
+	Label currentSubSoundLabel;
+	Slider subSoundSelectorSlider;
 
 	AmpEGParametersComponent ampEGParamComponents;
 

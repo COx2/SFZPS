@@ -2,7 +2,9 @@
 
 <JUCERPROJECT id="viLErN" name="SFZPS" projectType="audioplug" jucerVersion="5.3.2"
               reportAppUsage="0" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
-              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              pluginManufacturer="COx2" bundleIdentifier="com.COx2.SFZPS" companyName="COx2"
+              companyCopyright="COx2" companyWebsite="https://www.oufac.com/">
   <MAINGROUP id="bGClzI" name="SFZPS">
     <GROUP id="{559E5FF5-01BC-E3ED-58E8-43D6036DB697}" name="Source">
       <GROUP id="{1E1F0B85-3B32-4D34-308F-E70CCAF61357}" name="DSP">
