@@ -111,6 +111,7 @@ SFZSample* SF2Sound::sampleFor(unsigned long sampleRate)
 	if (sample == NULL) {
 		sample = new SFZSample(sampleRate);
 		samplesByRate.set(sampleRate, sample);
+		samples.set(String(sampleRate), sample);
 		}
 	return sample;
 }
